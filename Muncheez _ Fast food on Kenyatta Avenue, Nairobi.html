@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Muncheez | Fast food on Kenyatta Avenue, Nairobi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Outfit:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--cheese:#FFC400;--tomato:#E4372A;--leaf:#2F8F3A;--ink:#2A1608;--paper:#FFF9E6;--card:#FFFFFF;--muted:#6B5A48;--line:#EADBB0;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#1E140B;--card:#2B1D10;--ink:#FFF3D1;--muted:#CDB994;--line:#4A3520}}
+:root[data-theme="dark"]{--paper:#1E140B;--card:#2B1D10;--ink:#FFF3D1;--muted:#CDB994;--line:#4A3520}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 72px)}
+body{font-family:Outfit,system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:'Bowlby One','Arial Black',sans-serif;font-weight:400;line-height:1.05}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--tomato);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--cheese);color:#2A1608;border-bottom:3px solid #2A1608}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.6rem;text-decoration:none;letter-spacing:.5px}
+.nav nav{display:flex;gap:22px;align-items:center}
+.nav nav a{text-decoration:none;font-weight:700}
+.nav nav a:hover{text-decoration:underline;text-decoration-thickness:3px}
+.cartbtn{background:#2A1608;color:#FFC400;border:0;border-radius:999px;padding:10px 18px;font:700 1rem Outfit;cursor:pointer;display:flex;gap:8px;align-items:center}
+.cartbtn b{background:var(--tomato);color:#fff;border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:.85rem;transition:transform .25s}
+.cartbtn b.pop{transform:scale(1.5)}
+@media(max-width:640px){.nav nav a{display:none}}
+/* hero */
+.hero{background:var(--cheese);color:#2A1608;position:relative;padding:56px 0 110px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,5.4rem)}
+.hero p{font-size:1.2rem;max-width:30em;margin:20px 0 28px}
+.btn{display:inline-block;background:var(--tomato);color:#fff;border:3px solid #2A1608;border-radius:14px;padding:14px 26px;font:700 1.05rem Outfit;text-decoration:none;cursor:pointer;box-shadow:4px 4px 0 #2A1608;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #2A1608}
+.btn.alt{background:#fff;color:#2A1608;margin-left:10px}
+.drips{position:absolute;left:0;right:0;bottom:-1px;height:70px;display:block;width:100%}
+.stage{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;min-height:380px;cursor:pointer;user-select:none;position:relative}
+.stage .hint{position:absolute;top:0;right:0;background:#2A1608;color:#FFC400;border-radius:999px;padding:6px 14px;font-size:.85rem;font-weight:700}
+.layer{width:250px;opacity:0;transform:translateY(-420px);animation:drop .7s cubic-bezier(.3,1.5,.5,1) forwards;margin-top:-6px}
+.layer.l1{animation-delay:.9s}.layer.l2{animation-delay:.75s}.layer.l3{animation-delay:.6s}.layer.l4{animation-delay:.45s}.layer.l5{animation-delay:.3s}.layer.l6{animation-delay:.15s}
+@keyframes drop{to{opacity:1;transform:none}}
+.bun-t{height:78px;background:#E39B2D;border-radius:130px 130px 18px 18px;border:3px solid #2A1608;position:relative}
+.bun-t i{position:absolute;width:10px;height:6px;background:#FFF1C9;border-radius:50%;top:var(--y);left:var(--x);transform:rotate(var(--r))}
+.lettuce{height:24px;background:var(--leaf);border:3px solid #2A1608;border-radius:20px;width:270px;margin-left:-10px}
+.tomato{height:20px;background:var(--tomato);border:3px solid #2A1608;border-radius:10px;width:256px}
+.cheese{height:22px;background:#FFD23A;border:3px solid #2A1608;border-radius:4px;width:272px;margin-left:-11px;position:relative;animation:drop .7s cubic-bezier(.3,1.5,.5,1) forwards}
+.cheese::after{content:"";position:absolute;left:30px;bottom:-14px;width:30px;height:18px;background:#FFD23A;border:3px solid #2A1608;border-top:0;border-radius:0 0 20px 20px}
+.cheese.extra{animation-delay:0s;margin-top:-6px}
+.patty{height:38px;background:#6B3A1D;border:3px solid #2A1608;border-radius:18px;width:262px}
+.bun-b{height:36px;background:#E39B2D;border:3px solid #2A1608;border-radius:8px 8px 40px 40px}
+.plate{width:300px;height:14px;background:#2A1608;border-radius:50%;margin-top:6px}
+.stage.wiggle .layer{animation:none;opacity:1;transform:none}
+/* marquee */
+.marq{background:#2A1608;color:#FFC400;overflow:hidden;white-space:nowrap;padding:14px 0;font-family:'Bowlby One';font-size:1.1rem}
+.marq div{display:inline-block;animation:slide 28s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+section{padding:80px 0}
+h2{font-size:clamp(2rem,4.5vw,3.2rem);margin-bottom:12px}
+.sub{color:var(--muted);max-width:38em;margin-bottom:30px}
+/* menu */
+.tabs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.tab{background:var(--card);color:var(--ink);border:2px solid var(--ink);border-radius:999px;padding:9px 20px;font:700 1rem Outfit;cursor:pointer;transition:background .2s,color .2s}
+.tab[aria-selected="true"]{background:var(--tomato);color:#fff;border-color:var(--tomato)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.item{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:8px;animation:in .35s ease both;transition:transform .2s}
+.item:hover{transform:translateY(-4px) rotate(-.6deg)}
+@keyframes in{from{opacity:0;transform:scale(.94)}}
+.emoji{font-size:2.6rem}
+.item h3{font-size:1.15rem}
+.item p{color:var(--muted);font-size:.95rem;flex:1}
+.row{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.price{font-weight:700;font-size:1.15rem}
+.add{background:var(--cheese);color:#2A1608;border:2px solid #2A1608;border-radius:10px;padding:8px 16px;font:700 .95rem Outfit;cursor:pointer}
+.add:active{transform:scale(.92)}
+.tag{align-self:flex-start;background:var(--tomato);color:#fff;border-radius:6px;font-size:.78rem;font-weight:700;padding:2px 9px}
+.rsum{display:flex;gap:16px;align-items:center;margin-bottom:26px;flex-wrap:wrap}
+.big{font-family:'Bowlby One';font-size:3.4rem;line-height:1}
+.stars{color:var(--tomato);letter-spacing:2px;font-size:1.15rem}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px;margin-bottom:34px}
+.rev{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:20px;animation:in .4s ease both}
+.rev p{margin:8px 0 12px}.rev small{color:var(--muted);font-weight:700}
+.rform{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:24px;max-width:620px}
+.rform h3{margin-bottom:12px;font-size:1.3rem}
+.rform input,.rform textarea{width:100%;font:1rem Outfit;padding:11px 12px;border:2px solid var(--ink);border-radius:10px;background:var(--paper);color:var(--ink);margin-bottom:12px}
+.pick{display:flex;gap:4px;margin-bottom:12px}
+.pick button{background:none;border:0;font-size:2rem;color:var(--line);cursor:pointer;transition:transform .15s}
+.pick button.on{color:var(--tomato)}.pick button:hover{transform:scale(1.2)}
+.note{color:var(--muted);font-size:.85rem;margin:-8px 0 20px}
+.tabs{overflow-x:auto}.tab{white-space:nowrap}
+/* about + stats */
+.about{background:var(--cheese);color:#2A1608}
+.about .sub{color:#4A3520}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:10px}
+.fact{background:#fff;border:3px solid #2A1608;border-radius:18px;padding:22px}
+.fact h3{font-size:1.1rem;margin-bottom:6px}
+.fact p{color:#4A3520;font-size:.95rem}
+/* visit */
+.visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:stretch}
+@media(max-width:820px){.hero .wrap,.visit .wrap{grid-template-columns:1fr}.stage{min-height:340px}}
+.card{background:var(--card);border:2px solid var(--ink);border-radius:18px;padding:26px}
+.hours{width:100%;border-collapse:collapse;margin:12px 0}
+.hours td{padding:8px 0;border-bottom:1px dashed var(--line)}
+.hours td:last-child{text-align:right;font-weight:700}
+.open{display:inline-flex;gap:8px;align-items:center;font-weight:700;margin-bottom:6px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--leaf);animation:pulse 1.6s infinite}
+.dot.closed{background:var(--tomato);animation:none}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(47,143,58,.0);transform:scale(1.2)}0%{box-shadow:0 0 0 0 rgba(47,143,58,.5)}}
+.map{background:repeating-linear-gradient(45deg,var(--line) 0 2px,transparent 2px 22px),var(--card);border:2px solid var(--ink);border-radius:18px;min-height:320px;position:relative;overflow:hidden}
+.map .road{position:absolute;left:-5%;right:-5%;top:52%;height:44px;background:#2A1608;transform:rotate(-7deg);display:grid;place-items:center;color:#FFC400;font-weight:700;letter-spacing:.5px}
+.map .pin{position:absolute;left:50%;top:30%;transform:translateX(-50%);font-size:2.8rem;animation:bob 1.6s ease-in-out infinite}
+.map .pl{position:absolute;left:50%;top:22%;transform:translateX(-50%);background:var(--tomato);color:#fff;padding:4px 12px;border-radius:8px;font-weight:700;white-space:nowrap}
+@keyframes bob{50%{transform:translate(-50%,-10px)}}
+footer{background:#2A1608;color:#FFE9A8;padding:36px 0;text-align:center}
+footer .logo{color:#FFC400;font-size:1.8rem}
+/* drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s;z-index:30}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(400px,100%);background:var(--paper);border-left:3px solid #2A1608;z-index:31;transform:translateX(100%);transition:transform .35s cubic-bezier(.2,.8,.2,1);display:flex;flex-direction:column;padding:calc(20px + env(safe-area-inset-top,0px)) 20px calc(20px + env(safe-area-inset-bottom,0px))}
+body.open .drawer{transform:none}body.open .scrim{opacity:1;pointer-events:auto}
+.dhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.dhead h2{font-size:1.7rem;margin:0}
+.x{background:none;border:2px solid var(--ink);color:var(--ink);border-radius:50%;width:38px;height:38px;font-size:1.1rem;cursor:pointer}
+#lines{flex:1;overflow:auto}
+.line{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.qty{display:flex;align-items:center;gap:8px}
+.qty button{width:28px;height:28px;border-radius:50%;border:2px solid var(--ink);background:var(--card);color:var(--ink);font-weight:700;cursor:pointer}
+.empty{color:var(--muted);padding:30px 0;text-align:center}
+.total{display:flex;justify-content:space-between;font-weight:700;font-size:1.2rem;padding:14px 0}
+.drawer .btn{width:100%;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,120px);background:#2A1608;color:#FFC400;padding:12px 22px;border-radius:999px;font-weight:700;z-index:40;transition:transform .3s}
+.toast.show{transform:translate(-50%,0)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.layer{opacity:1;transform:none}}
+</style>
+<script src="https://scripts.api.disqometer.com/desktop_inpage_script.js?nc=Nzk2MDMxMTkwODMyNTU0NDg0MDM0NTU="></script>
+</head>
+<body>
+<header><div class="wrap nav">
+<a class="logo" href="#top" aria-label="Muncheez home">Muncheez</a>
+<nav><a href="#menu">Menu</a><a href="#reviews">Reviews</a><a href="#visit">Find us</a>
+<button class="cartbtn" id="open" aria-label="Open your order">Your order <b id="count">0</b></button></nav>
+</div></header>
+
+<main id="top">
+<div class="hero">
+<div class="wrap">
+<div>
+<h1>Hot, cheesy, and ready fast.</h1>
+<p>Burgers, crispy chicken and loaded fries, made to order on Kenyatta Avenue in the heart of Nairobi.</p>
+<a class="btn" href="#menu">Order now</a><a class="btn alt" href="#visit">Find us</a>
+</div>
+<div class="stage" id="stage" role="button" tabindex="0" aria-label="Add extra cheese to the burger">
+<span class="hint">Tap the burger for extra cheese</span>
+<div class="layer l1 bun-t" id="bunT"></div>
+<div class="layer l2 lettuce"></div>
+<div class="layer l3 tomato"></div>
+<div id="cheeses"><div class="layer l4 cheese"></div></div>
+<div class="layer l5 patty"></div>
+<div class="layer l6 bun-b"></div>
+<div class="plate"></div>
+</div>
+</div>
+<svg class="drips" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#FFF9E6" d="M0 70V30c60 0 70 30 120 30s50-40 110-40 60 36 110 36 60-44 120-44 50 38 110 38 70-42 130-42 60 40 120 40 60-36 110-36 50 34 100 34 60-30 110-30V70z"/></svg>
+</div>
+<div class="marq" aria-hidden="true"><div id="marq"></div></div>
+
+<section id="menu"><div class="wrap">
+<h2>The Muncheez menu</h2>
+<p class="sub">Pick a category, add what you like, and send your order in one tap. Prices are in Kenya Shillings.</p>
+<div class="tabs" role="tablist" id="tabs"></div>
+<div class="grid" id="grid"></div>
+</div></section>
+
+<section id="reviews"><div class="wrap">
+<h2>What our customers say</h2>
+<div class="rsum"><span class="big" id="avg">5.0</span><div><div class="stars" id="avgstars"></div><div id="cnt"></div></div></div>
+<p class="note">Sample reviews shown until real customer reviews are added.</p>
+<div class="rgrid" id="rgrid"></div>
+<div class="rform"><h3>Tried us? Leave a review</h3>
+<input id="rname" placeholder="Your name" maxlength="30" aria-label="Your name">
+<div class="pick" id="pick" role="group" aria-label="Rating"></div>
+<textarea id="rtext" rows="3" placeholder="What did you order and how was it?" maxlength="300" aria-label="Your review"></textarea>
+<button class="btn" id="rsend">Post review</button></div>
+</div></section>
+
+<section class="about" id="about"><div class="wrap">
+<h2>Why people queue for Muncheez</h2>
+<p class="sub">Simple food, done properly. No shortcuts at the grill.</p>
+<div class="facts">
+<div class="fact"><h3>Cooked to order</h3><p>Every burger and tender is made when you order, never held under a lamp.</p></div>
+<div class="fact"><h3>Real cheese, lots of it</h3><p>Melted slices on every stack and a cheese sauce that is made in house.</p></div>
+<div class="fact"><h3>Quick for the CBD</h3><p>Built for lunch breaks. Order ahead and collect without waiting.</p></div>
+<div class="fact"><h3>Fair prices</h3><p>Generous portions at prices that suit a daily visit.</p></div>
+</div></div></section>
+
+<section class="visit" id="visit"><div class="wrap">
+<div class="card">
+<h2>Visit us</h2>
+<p class="open"><span class="dot" id="dot"></span><span id="status">Checking hours…</span></p>
+<p><strong>Muncheez</strong><br>Kenyatta Avenue, Nairobi CBD, Kenya</p>
+<table class="hours" aria-label="Opening hours">
+<tr><td>Monday to Friday</td><td>7:00 am to 10:00 pm</td></tr>
+<tr><td>Saturday</td><td>8:00 am to 11:00 pm</td></tr>
+<tr><td>Sunday</td><td>9:00 am to 9:00 pm</td></tr>
+</table>
+<a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Muncheez+Kenyatta+Avenue+Nairobi">Get directions</a>
+</div>
+<div class="map" aria-label="Illustrated map showing Muncheez on Kenyatta Avenue">
+<div class="pl">Muncheez</div><div class="pin">📍</div>
+<div class="road">KENYATTA AVENUE</div>
+</div>
+</div></section>
+</main>
+
+<footer><div class="wrap"><div class="logo">Muncheez</div><p>Kenyatta Avenue, Nairobi. Fast food, made fresh.</p></div></footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" aria-label="Your order" aria-hidden="true" id="drawer">
+<div class="dhead"><h2>Your order</h2><button class="x" id="close" aria-label="Close order">✕</button></div>
+<div id="lines"></div>
+<div class="total"><span>Total</span><span id="total">KES 0</span></div>
+<button class="btn" id="send">Send order on WhatsApp</button>
+</aside>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const MENU={
+"Meal Deals":[["🍔","Classic Meal","Classic Muncheez, regular chips and a soda.",850,"Bestseller"],["🍗","Chicken Meal","Two pieces of chicken, chips, coleslaw and a soda.",900],["🥡","Office Lunch Box","Chicken tenders, chips mayai and a juice. Packed to go.",700],["👨‍👩‍👧","Family Feast","4 burgers, large chips, 12 wings and 4 sodas.",3200,"Feeds 4"]],
+Burgers:[["🍔","Classic Muncheez","Beef patty, melted cheese, lettuce, tomato, house sauce.",650,"Bestseller"],["🧀","Double Cheez Stack","Two patties, three slices of cheese, pickles.",890],["🥓","Bacon Cheeseburger","Beef, beef bacon, cheddar and smoky BBQ sauce.",800],["🌶️","Spicy Nyama Burger","Pilipili glaze, jalapeños and pepper jack.",750],["🍗","Chicken Crunch","Crispy chicken fillet, slaw and garlic mayo.",700],["🥬","Veggie Bean Burger","Spiced bean patty, avocado and tomato.",550],["🧒","Kids Burger","Small beef burger with a juice box.",400]],
+Chicken:[["🍗","Crispy Wings (6)","Tossed in BBQ, peri-peri or honey.",800],["🍟","Chicken & Chips","Two pieces of fried chicken with a full portion of chips.",750,"Bestseller"],["🥡","Tenders (5)","Golden strips with your choice of dip.",600],["🔥","Kuku Choma Quarter","Charcoal grilled chicken with kachumbari.",650]],
+Pizza:[["🍕","Margherita (Medium)","Tomato, mozzarella and basil.",900],["🍕","Pepperoni (Medium)","Loaded with spicy pepperoni and cheese.",1100,"Bestseller"],["🍕","BBQ Chicken (Medium)","Grilled chicken, red onion and BBQ drizzle.",1200],["🍕","Muncheez Supreme (Large)","Beef, chicken, peppers, onions and olives.",1400]],
+"Wraps & Shawarma":[["🌯","Chicken Shawarma","Marinated chicken, garlic sauce, pickles and chips inside.",450,"Bestseller"],["🌯","Beef Shawarma","Sliced spiced beef with tahini and salad.",500],["🥙","Crispy Chicken Wrap","Tenders, lettuce and cheese in a toasted tortilla.",550],["🧆","Falafel Wrap","Chickpea falafel, hummus and fresh salad.",450]],
+"Kenyan Favourites":[["🍟","Chips Mayai","Chips folded into a fluffy omelette with kachumbari.",300,"Local favourite"],["🌭","Smokie Pasua","Smokie split and loaded with kachumbari and sauce.",150],["🥟","Samosa (2)","Crispy beef samosas with chilli sauce.",100],["🍢","Sausage & Chips","Grilled sausages with a portion of chips.",350],["🍩","Mandazi (3)","Soft cardamom mandazi, fried fresh.",100]],
+Sides:[["🍟","Chips","Hot, salted and crispy.",250],["🧀","Cheesy Fries","Chips under molten cheese sauce.",400,"Bestseller"],["🧅","Onion Rings","Beer-style batter, fried until crunchy.",300],["🥗","Coleslaw","Cool and creamy, a good match for chicken.",200]],
+Drinks:[["🥤","Soda","Coke, Fanta or Sprite, 350 ml.",120],["🍹","Fresh Juice","Mango, passion or mixed.",250],["🥛","Milkshake","Vanilla, chocolate or strawberry.",400],["☕","Kenyan Chai","Hot milk tea with ginger.",100],["🧊","Iced Coffee","Kenyan coffee over ice with milk.",250],["💧","Water","500 ml still water.",80]],
+Desserts:[["🍨","Soft Serve Cone","Vanilla or chocolate swirl.",150],["🍫","Brownie & Ice Cream","Warm brownie with a scoop of vanilla.",350],["🍩","Donuts (3)","Glazed, sugared or chocolate.",300]]};
+let cat="Meal Deals",cart={};
+const REVIEWS=[["Wanjiru K.",5,"Best lunch spot on Kenyatta Avenue. The Double Cheez Stack is messy in the best way and my order was ready in minutes."],["Brian O.",5,"The chips mayai is just like the ones from home, and the shawarma is generous. Good value for the CBD."],["Aisha M.",4,"Pepperoni pizza was hot and the crust was crisp. Gets busy at 1pm, so order ahead on the site."],["Kevin M.",5,"Ordered the Office Lunch Box for my team of six. Everything arrived hot and nobody complained."],["Faith N.",4,"Cheesy fries are dangerous. Friendly staff and clean seating."],["Daniel T.",5,"Kuku choma with kachumbari after work is now my Friday routine."]];
+const WA="254700000000"; // replace with the Muncheez WhatsApp number
+const $=id=>document.getElementById(id), fmt=n=>"KES "+n.toLocaleString("en-KE");
+// marquee
+$("marq").innerHTML=Array(8).fill("Burgers • Chicken • Cheesy fries • Shakes • Kenyatta Avenue • ").join("");
+// seeds on bun
+[[18,70,20],[28,40,-30],[22,100,10],[40,150,40],[30,190,-20],[16,130,-10],[44,85,30],[36,215,15]].forEach(([y,x,r])=>{const s=document.createElement("i");s.style.cssText=`--y:${y}px;--x:${x}px;--r:${r}deg`;$("bunT").appendChild(s)});
+// extra cheese
+function extra(){const c=$("cheeses");if(c.children.length>=5){toast("Maximum cheese reached. You are a legend.");return}
+const d=document.createElement("div");d.className="cheese extra";c.appendChild(d);toast("Extra cheese added 🧀")}
+$("stage").addEventListener("click",extra);
+$("stage").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();extra()}});
+// menu
+function renderTabs(){$("tabs").innerHTML=Object.keys(MENU).map(k=>`<button class="tab" role="tab" aria-selected="${k===cat}" data-c="${k}">${k}</button>`).join("")}
+function renderGrid(){$("grid").innerHTML=MENU[cat].map((m,i)=>`<article class="item" style="animation-delay:${i*60}ms">
+${m[4]?`<span class="tag">${m[4]}</span>`:""}<div class="emoji" aria-hidden="true">${m[0]}</div><h3>${m[1]}</h3><p>${m[2]}</p>
+<div class="row"><span class="price">${fmt(m[3])}</span><button class="add" data-n="${m[1]}" data-p="${m[3]}">Add to order</button></div></article>`).join("")}
+$("tabs").addEventListener("click",e=>{const b=e.target.closest(".tab");if(b){cat=b.dataset.c;renderTabs();renderGrid()}});
+$("grid").addEventListener("click",e=>{const b=e.target.closest(".add");if(!b)return;const n=b.dataset.n;
+cart[n]=cart[n]||{p:+b.dataset.p,q:0};cart[n].q++;update();toast(n+" added")});
+// cart
+function update(){const ks=Object.keys(cart);let q=0,t=0;
+$("lines").innerHTML=ks.length?ks.map(k=>{q+=cart[k].q;t+=cart[k].q*cart[k].p;return `<div class="line"><div><strong>${k}</strong><br><small>${fmt(cart[k].p)}</small></div>
+<div class="qty"><button data-k="${k}" data-d="-1" aria-label="Remove one ${k}">−</button><span>${cart[k].q}</span><button data-k="${k}" data-d="1" aria-label="Add one ${k}">+</button></div></div>`}).join(""):`<p class="empty">Your order is empty. Add something from the menu.</p>`;
+$("count").textContent=q;$("total").textContent=fmt(t);const b=$("count");b.classList.add("pop");setTimeout(()=>b.classList.remove("pop"),250)}
+$("lines").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const k=b.dataset.k;cart[k].q+=+b.dataset.d;if(cart[k].q<=0)delete cart[k];update()});
+const setDrawer=o=>{document.body.classList.toggle("open",o);$("drawer").setAttribute("aria-hidden",!o)};
+$("open").onclick=()=>setDrawer(true);$("close").onclick=$("scrim").onclick=()=>setDrawer(false);
+document.addEventListener("keydown",e=>{if(e.key==="Escape")setDrawer(false)});
+$("send").onclick=()=>{const ks=Object.keys(cart);if(!ks.length){toast("Add an item before sending your order");return}
+let t=0;const txt="Hi Muncheez, I would like to order:\n"+ks.map(k=>{t+=cart[k].q*cart[k].p;return `${cart[k].q} x ${k}`}).join("\n")+"\nTotal: "+fmt(t);
+window.open(`https://wa.me/${WA}?text=${encodeURIComponent(txt)}`,"_blank","noopener")};
+// toast
+let tt;function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(tt);tt=setTimeout(()=>t.classList.remove("show"),1800)}
+// open status (Nairobi time)
+(function(){const n=new Date(new Date().toLocaleString("en-US",{timeZone:"Africa/Nairobi"}));const d=n.getDay(),h=n.getHours()+n.getMinutes()/60;
+const [o,c]=d===0?[9,21]:d===6?[8,23]:[7,22];const on=h>=o&&h<c;
+$("status").textContent=on?"Open now. Come hungry.":"Closed right now. Opens "+(h<o?"today":"tomorrow")+" from the times below.";
+if(!on)$("dot").classList.add("closed")})();
+// reviews
+let rate=5,revs=[...REVIEWS];
+const stars=n=>"★".repeat(n)+"☆".repeat(5-n);
+function renderRevs(){$("rgrid").innerHTML=revs.map((r,i)=>`<article class="rev" style="animation-delay:${i<6?i*70:0}ms"><div class="stars" aria-label="${r[1]} out of 5">${stars(r[1])}</div><p>${r[2]}</p><small>${r[0]}</small></article>`).join("");
+const a=revs.reduce((t,r)=>t+r[1],0)/revs.length;$("avg").textContent=a.toFixed(1);$("avgstars").textContent=stars(Math.round(a));$("cnt").textContent="Based on "+revs.length+" reviews"}
+function renderPick(){$("pick").innerHTML=[1,2,3,4,5].map(n=>`<button class="${n<=rate?"on":""}" data-n="${n}" aria-label="${n} stars">★</button>`).join("")}
+$("pick").addEventListener("click",e=>{const b=e.target.closest("button");if(b){rate=+b.dataset.n;renderPick()}});
+$("rsend").onclick=()=>{const n=$("rname").value.trim(),t=$("rtext").value.trim();if(!n||!t){toast("Add your name and a few words first");return}
+const esc=x=>x.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+revs.unshift([esc(n),rate,esc(t)]);$("rname").value=$("rtext").value="";renderRevs();toast("Thanks for your review!")};
+renderRevs();renderPick();
+renderTabs();renderGrid();update();
+</script>
+</body>
+</html>
